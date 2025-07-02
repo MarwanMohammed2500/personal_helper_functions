@@ -24,29 +24,29 @@ def train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch.Tensor, X_t
 		train_loss_tracker: list, the training loss corresponding to each epoch in epochs_count
 		test_loss_tracker: list, the testing loss corresponding to each epoch in epochs_count
 	"""
-    epochs_count = []
-    train_loss_tracker = []
-    test_loss_tracker = []
-    for epoch in range(epochs):
-        model.train() # Set the model to training mode
-        train_preds = model(X_train) # Inference on the training set
-        loss = loss_fn(train_preds, y_train) # compute the loss function
-
-        optimizer.zero_grad() # Zero grad, so that the gradients don't stack
-        loss.backward() # Backpropagation
-        optimizer.step() # Optimizer step
-
-        model.eval() # Set model to evaluation mode
-        if epoch % 10 == 0:
-            with torch.inference_mode():
-                validation_preds = model(X_test)
-                validation_loss = loss_fn(validation_preds, y_test)
-                epochs_count.append(epoch)
-                train_loss_tracker.append(loss.detach().numpy())
-                test_loss_tracker.append(validation_loss.numpy())
-            if verbose:
-                print(f"Epoch #{epoch+1:03}, Training Loss = {loss:.4f}, Validation Loss = {validation_loss:.4f}")
-
+	epochs_count = []
+	train_loss_tracker = []
+	test_loss_tracker = []
+	for epoch in range(epochs):
+		model.train() # Set the model to training mode
+		train_preds = model(X_train) # Inference on the training set
+		loss = loss_fn(train_preds, y_train) # compute the loss function
+	
+		optimizer.zero_grad() # Zero grad, so that the gradients don't stack
+		loss.backward() # Backpropagation
+		optimizer.step() # Optimizer step
+	
+		model.eval() # Set model to evaluation mode
+		if epoch % 10 == 0:
+			with torch.inference_mode():
+				validation_preds = model(X_test)
+				validation_loss = loss_fn(validation_preds, y_test)
+				epochs_count.append(epoch)
+				train_loss_tracker.append(loss.detach().numpy())
+				test_loss_tracker.append(validation_loss.numpy())
+			if verbose:
+				print(f"Epoch #{epoch+1:03}, Training Loss = {loss:.4f}, Validation Loss = {validation_loss:.4f}")
+	
 	# Final evaluation
 	model.eval()
 	with torch.inference_mode():
