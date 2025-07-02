@@ -4,13 +4,8 @@ import torch
 def train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch.Tensor, X_test:torch.Tensor, y_train:torch.Tensor, y_test:torch.Tensor, loss_fn:torch.nn.Module, optimizer:torch.optim.Optimizer, verbose:bool=False):
 	"""
 	This train-test loop used for training models (made specifically for PyTorch models) follows the following steps:
-		1. Forward Pass
-		2. Compute the loss
-		3. optimizer.zero_grad
-		4. Backpropagation
-		5. Optimizer step
+		Forward Pass --> Compute the loss --> optimizer.zero_grad --> Backpropagation --> Optimizer step
 	And every 10 epochs, it would evaluate on X_test
-	
 	input:
 		epochs: int, the number of epochs to train the model
 		model: torch.nn.Module, the model to train
@@ -56,4 +51,4 @@ def train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch.Tensor, X_t
 		train_loss_tracker.append(loss.detach().numpy())
 		test_loss_tracker.append(validation_loss.numpy())
     	print(f"Final Training Loss = {loss:.4f} | Final Validation Loss = {validation_loss:.4f}")
-    return model, epochs_count, train_loss_tracker, test_loss_tracker
+    	return model, epochs_count, train_loss_tracker, test_loss_tracker
