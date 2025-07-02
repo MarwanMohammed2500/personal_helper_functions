@@ -96,7 +96,8 @@ def multi_class_train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch
                 epochs_count.append(epoch)
                 train_loss_tracker.append(loss.detach().numpy())
                 test_loss_tracker.append(validation_loss.numpy())
-                # print(f"Epoch #{epoch+1:03}, Training Loss = {loss:.4f}, Validation Loss = {validation_loss:.4f}")
+                if verbose:
+                    print(f"Epoch #{epoch+1:03}, Training Loss = {loss:.4f}, Validation Loss = {validation_loss:.4f}")
 
     # Final evaluation
     model.eval()
