@@ -55,5 +55,5 @@ def train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch.Tensor, X_t
 		epochs_count.append(epochs)
 		train_loss_tracker.append(loss.detach().numpy())
 		test_loss_tracker.append(validation_loss.numpy())
-    print(f"Final Training Loss = {loss:.4f} | Final Validation Loss = {validation_loss:.4f}")
+    	print(f"Final Training Loss = {loss:.4f} | Final Validation Loss = {validation_loss:.4f}")
     return model, epochs_count, train_loss_tracker, test_loss_tracker
