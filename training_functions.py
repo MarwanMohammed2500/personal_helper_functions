@@ -1,7 +1,7 @@
 import torch
 
 
-def train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch.Tensor, X_test:torch.Tensor, y_train:torch.Tensor, y_test:torch.Tensor, loss_fn:torch.nn, optimizer:torch.optim, verbose=False:bool):
+def train_test_loop(epochs:int, model:torch.nn.Module, X_train:torch.Tensor, X_test:torch.Tensor, y_train:torch.Tensor, y_test:torch.Tensor, loss_fn:torch.nn.Module, optimizer:torch.optim.Optimizer, verbose:bool=False):
 	"""
 	This train-test loop used for training models (made specifically for PyTorch models) follows the following steps:
 		1. Forward Pass
