@@ -29,7 +29,7 @@ else:
 ---
 
 # Required Dependencies:
-So far, you just need to install PyTorch. I'll update the list in the future if needed (Possibly will add matplotlib and seaborn alongside Pandas soon)
-
+- PyTorc
+- TQDM
 # Collaboration:
 Feel free to reach out or fork this repo. Collaborations are always welcome!
