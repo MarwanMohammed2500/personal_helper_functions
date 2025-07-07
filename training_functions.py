@@ -266,7 +266,7 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
 
                 tracker[epoch] = {"train_loss":train_loss/len(train_dataloader),
                                 "test_loss":test_loss/len(test_dataloader)} # Track the train and test loss per epoch
-            print(f"\nAverage Train Loss = {train_loss/len(train_dataloader):.3f}, Average Validation Loss = {test_loss/len(test_dataloader):.3f}\n--------------------------")
+            print(f"\nAverage Train Loss = {train_loss/len(train_dataloader):.3f}, Average Validation Loss = {test_loss/len(test_dataloader):.3f}")
 
     # Final Test Evaluation
     model.eval() # Set model to evaluation mode 
