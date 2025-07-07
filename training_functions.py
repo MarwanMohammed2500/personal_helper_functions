@@ -231,6 +231,7 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
     """
     tracker = {}
     for epoch in tqdm(range(epochs)):
+        print(f"Epoch #{epoch}\n----------------------------")
         train_loss, test_loss = 0, 0
 
         model.to(device) # Cast the model to the proper device
@@ -253,7 +254,6 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
             optimizer.step()
             if (verbose) and (batch % (len(train_dataloader)//5) == 0):
                 print(f"Batch #{batch}, Average Train Loss = {train_loss/(batch+1):.3f}")
-        print(f"End epoch {epoch}\n----------------------------")
         
         if epoch % 10 == 0:
             model.eval() # Set model to evaluation mode 
