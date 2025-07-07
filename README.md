@@ -4,8 +4,11 @@ These are a bunch of helper functions I personally use and built (and will conti
 ---
 
 # Files:
-## training_functions.py:
-This file contains my train-test loop implementation for training PyTorch models
+### training_functions.py:
+This file contains my train-test loop implementations for training PyTorch models
+
+### plotting_functions.py:
+This contains any helpful and common plottings, functionalized.
 
 ---
 
