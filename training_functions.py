@@ -268,4 +268,15 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
                                 "test_loss":test_loss/len(test_dataloader)} # Track the train and test loss per epoch
             print(f"\nAverage Train Loss = {train_loss/len(train_dataloader):.3f}, Average Validation Loss = {test_loss/len(test_dataloader):.3f}\n--------------------------")
 
+    # Final Test Evaluation
+    model.eval() # Set model to evaluation mode 
+        with torch.inference_mode():
+            test_features, test_labels = next(iter(test_dataloader))
+            test_features, test_labels = test_features.to(device), test_labels.to(device)
+          
+            X_train_batch, y_train_batch = X_train_batch.to(device), y_train_batch.to(device) # Cast the data to device
+            test_pred = model(test_features).squeeze() # prediction
+            test_loss = loss_fn(test_pred, test_labels) # loss function
+        print(f"\nValidation Loss = {test_features}")
+
     return model, pd.DataFrame(tracker).T.astype(float)
