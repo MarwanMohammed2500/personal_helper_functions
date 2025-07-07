@@ -211,7 +211,7 @@ def multi_class_train_test_loop(epochs:int, model:torch.nn.Module,
 
 def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, optimizer:torch.optim.Optimizer, epochs:int,
                                     train_dataloader:torch.utils.data.DataLoader, test_dataloader:torch.utils.data.DataLoader,
-                                    verbose:bool=False, device:str="cpu"):
+                                    device:str="cpu"):
     """
     **Train-Test loop implementation for batch binary classification**
     This train-test loop used for training models (made specifically for PyTorch models) follows the following steps:
@@ -252,8 +252,6 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
 
             # 4. Optimzier Step
             optimizer.step()
-            if (verbose) and (batch % (len(train_dataloader)//5) == 0):
-                print(f"Batch #{batch}, Average Train Loss = {train_loss/(batch+1):.3f}")
         
         if epoch % 10 == 0:
             model.eval() # Set model to evaluation mode 
@@ -266,7 +264,7 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
 
                 tracker[epoch] = {"train_loss":train_loss/len(train_dataloader),
                                 "test_loss":test_loss/len(test_dataloader)} # Track the train and test loss per epoch
-            print(f"\nAverage Train Loss = {train_loss/len(train_dataloader):.3f}, Average Validation Loss = {test_loss/len(test_dataloader):.3f}")
+            print(f"Epoch #{epoch}, Average Train Loss = {train_loss/len(train_dataloader):.3f} | Average Validation Loss = {test_loss/len(test_dataloader):.3f}")
 
     # Final Test Evaluation
     model.eval() # Set model to evaluation mode 
