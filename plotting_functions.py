@@ -21,18 +21,16 @@ def plot_train_test_loss(epoch_count:list, train_loss:list, test_loss:list, figs
 
     y_max = max(max(test_loss), max(train_loss))
     y_min = min(min(test_loss), min(train_loss))
+    last_epoch = int(epoch_count[-1])
 
     min_train_loss_idx = epoch_count[np.argmin(train_loss)]
     min_test_loss_idx = epoch_count[np.argmin(test_loss)]
     plt.vlines(x=min_train_loss_idx, ymin=y_min, ymax=y_max, linestyle="--", color="r")
     plt.vlines(x=min_test_loss_idx, ymin=y_min, ymax=y_max, linestyle="--", color="b")
 
-    ax.text(s=f"Min Train Loss: {min(train_loss):.2f}\n@ Epoch #{min_train_loss_idx}", x=(min_train_loss_idx - (len(epoch_count)//10)), y=y_max)
-    ax.text(s=f"Min Test Loss: {min(test_loss):.2f}\n@ Epoch #{min_test_loss_idx}", x=(min_test_loss_idx - (len(epoch_count)//10)), y=(y_max/2))
-
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
-    plt.title("Train vs Test Loss")
-    plt.legend(loc="center")
+    plt.title(f"Min Train Loss: {min(train_loss):.2f} @Epoch #{min_train_loss_idx} | Min Test Loss: {min(test_loss):.2f} @Epoch #{min_test_loss_idx}")
+    plt.legend()
     plt.grid(True)
     plt.show()
