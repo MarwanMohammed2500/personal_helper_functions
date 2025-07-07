@@ -231,7 +231,7 @@ def minibatch_binary_class_train_test_loop(model:torch.nn, loss_fn:torch.nn, opt
     """
     tracker = {}
     for epoch in tqdm(range(epochs)):
-        print(f"Epoch #{epoch}\n----------------------------")
+        print(f"\n----------------------------Epoch #{epoch}\n")
         train_loss, test_loss = 0, 0
 
         model.to(device) # Cast the model to the proper device
