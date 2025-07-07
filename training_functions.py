@@ -1,6 +1,7 @@
 import torch
 from tqdm.auto import tqdm
 from sklearn.metrics import accuracy_score
+import pandas as pd
 
 def regression_train_test_loop(epochs:int, model:torch.nn.Module,
                     X_train: torch.Tensor, X_test: torch.Tensor, y_train:torch.Tensor, y_test:torch.Tensor,
