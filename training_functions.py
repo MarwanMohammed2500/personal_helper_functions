@@ -24,7 +24,7 @@ def regression_train_test_loop(epochs:int, model:torch.nn.Module,
 		tracker: pd.DataFrame, tracked performance (train and test loss) across epochs
 	"""
     tracker = {}
-	
+
 	# Send tensors and the model to the proper device
 	X_train, y_train, X_test, y_test = X_train.to(device), y_train.to(device), X_test.to(device), y_test.to(device)
 	model.to(device)
