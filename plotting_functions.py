@@ -27,8 +27,8 @@ def plot_train_test_loss(epoch_count:list, train_loss:list, test_loss:list, figs
     plt.vlines(x=min_train_loss_idx, ymin=y_min, ymax=y_max, linestyle="--", color="r")
     plt.vlines(x=min_test_loss_idx, ymin=y_min, ymax=y_max, linestyle="--", color="b")
 
-    ax.text(s=f"Min Train Loss: {min(train_loss):.2f}\n@ Epoch #{min_train_loss_idx}", x=(min_train_loss_idx - (len(train_test_loss_df)//10)), y=y_max)
-    ax.text(s=f"Min Test Loss: {min(test_loss):.2f}\n@ Epoch #{min_test_loss_idx}", x=(min_test_loss_idx - (len(train_test_loss_df)//10)), y=(y_max/2))
+    ax.text(s=f"Min Train Loss: {min(train_loss):.2f}\n@ Epoch #{min_train_loss_idx}", x=(min_train_loss_idx - (len(epoch_count)//10)), y=y_max)
+    ax.text(s=f"Min Test Loss: {min(test_loss):.2f}\n@ Epoch #{min_test_loss_idx}", x=(min_test_loss_idx - (len(epoch_count)//10)), y=(y_max/2))
 
     plt.xlabel("Epochs")
     plt.ylabel("Loss")
