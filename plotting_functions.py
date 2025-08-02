@@ -34,3 +34,18 @@ def plot_train_test_loss(epoch_count:list, train_loss:list, test_loss:list, figs
     plt.legend()
     plt.grid(True)
     plt.show()
+
+def unique_target_ratio(unique_target_counts: pandas.Series):
+    """
+    This function takes in the output of df.target.value_counts() as input, and returns a dictionary of each unique item and its ratio compared to other unique values
+    Arguments:
+    unique_target_counts: pandas.Series, the unique value_counts of the target variable
+
+    Returns:
+    ratios: dict, A dictionary, with keys being the unique values, and items being their ratio
+    """
+    total = int(unique_target_counts.sum())
+    ratios = {}
+    for idx in range(len(unique_target_counts)):
+        ratios[unique_target_counts.index[idx]] = round(int(unique_target_counts.iloc[idx])/total, 2)
+    return ratios
